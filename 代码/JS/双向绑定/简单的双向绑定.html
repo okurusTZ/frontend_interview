@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>极简双向绑定</h1>
+  <input type="text" name="" id="text_id">
+  <p id="p_id"></p>
+  <script>
+    /**
+     * 直接操作DOM节点的inner，一对一的方式，
+     * 每有一个需要监听的元素，就需要设置一次
+     */
+    var obj = {}
+    Object.defineProperty(obj, 'val', {
+      get() {
+        // console.log('get')
+      },
+      set(newValue) {
+        // console.log('set')
+        document.getElementById('p_id').innerHTML = newValue
+        // document.getElementById('text_id').innerHTML = newValue
+      }
+    })
+
+    document.addEventListener('keyup', (e) => {
+      obj.val = e.target.value;
+      console.log(e.target.value)
+    })
+    // // 写入时触发set
+    // obj.val = 123;
+
+    // // 读取时触发get
+    // // undefined，因为get本身没有返回值
+    // console.log(obj.val)
+  </script>
+</body>
+</html>
