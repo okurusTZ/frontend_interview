@@ -20,3 +20,6 @@ function trim(str) {
 //? 匹配前面一个表达式 0 次或者 1 次。等价于 {0,1}。
 
 // /e?le?/ 匹配 "angel" 中的 'el'、"angle" 中的 'le' 以及 "oslo' 中的 'l'。
+
+
+console.log(typeof [])
