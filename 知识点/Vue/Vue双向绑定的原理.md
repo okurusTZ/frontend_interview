@@ -46,3 +46,17 @@ Object.defineProperty(obj, 'value', {
 2. 一旦指定的value被get了，就把这个watcher加入到订阅者队列里去。（实际上watcher在自身实例化的时候，自动调用get方法，往订阅器里添加自己
 3. 每当属性变动的时候，触发observer里的set方法，让订阅器向所有数组里的订阅者发送一个notify方法，通知所有订阅者更新自身的数据。
 
+
+
+
+
+#### 双向绑定的不足之处
+
+* 只能监听一个属性，不能监听整个对象。
+  * 实例化后再添加属性，不会被监听到（可以用新增属性$set来解决
+  * `this.$set(this.data, 'key', value)`添加单个属性
+  * `this.obj = Object.assign({}, this.obj, {age: 18, name: 'xinyi'})`添加多个属性
+* 需要for in遍历找对象中的属性
+* 不能监听数组，需要对数组进行特异性操作（push，pop，shift
+  * 利用index来设置数组项的时候，不能检测到。
+* 会污染源对象

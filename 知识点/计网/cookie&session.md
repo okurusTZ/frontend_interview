@@ -81,6 +81,11 @@ cookie相当于是给客户端办法的通行证，服务器可以根据cookie�
 
   显式关闭SameSite属性。前提必须设置secure属性，不然无效。（保证安全
 
+##### 如何保护cookie
+
+* httpOnly：无法通过脚本获取cookie
+* secure：只能在加密传输中传输
+
 ### Session机制
 
 session主要用来在服务器端记录客户端状态，比cookie简单，但会相应增加服务器的存储压力。
@@ -145,3 +150,30 @@ session本身仍然需要cookie支持，因为session不能通过HTTP链接来�
 4. session会在一定时间内保存在服务器上，访问增多时，会影响服务器**性能**
 5. 单个cookie的**保存数据**不能超过4k，很多浏览器都限制一个占点最多保存20个cookie。而session没有存储数据量的限制，可以保存更复杂的数据类型。
 
+
+
+### 拓展：token
+
+##### 组成
+
+uid+time+sign[+params]
+
+* uid：用户的唯一身份标识
+* time：当前时间的时间戳
+* sign：签名，`hash/encrypt`压缩成16进制字符串，防止第三方恶意拼接
+* params：常用的固定参数，避免重复查库
+
+##### 存放
+
+在客户端存放在localStorage、cookie或者sessionStorage里。在服务器一般存放在数据库里。
+
+##### 认证流程
+
+* 用户登录，服务器把Token返回给客户端
+* 客户端收到数据后保存
+* 再次访问时，把token放入headers里
+* 服务器通过**filter过滤器**校验。校验成功则返回请求数据，失败则返回错误码
+
+##### 抵抗CSRF攻击
+
+CSRF攻击中，**form发起的POST请求不受到浏览器同源策略的限制**，因此cookie会被添加到请求头中。而token不会被浏览器自动添加到headers里，提交的表单无法通过服务器过滤。
