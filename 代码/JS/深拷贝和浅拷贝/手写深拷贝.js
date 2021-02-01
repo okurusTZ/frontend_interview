@@ -1,4 +1,3 @@
-import { type } from "os";
 
 /**
  * 步骤：
@@ -9,6 +8,8 @@ import { type } from "os";
  * 注意： 如果对象的属性引用自身，那么会导致无线递归
  * 所以需要利用一个map来记录所有已经拷贝过的对象
  */
+
+const { mainModule } = require("process");
 
 
 
@@ -38,6 +39,14 @@ function deepCopy(obj, map = new Map()) {
   }
 
   return copy;
-
-
 }
+const test = {
+  info: {
+    name:'xinyi',
+    nums:[12,3,4]
+  }
+}
+const copy = deepCopy(test);
+test.info.nums.push(12);
+
+console.log(test, copy);

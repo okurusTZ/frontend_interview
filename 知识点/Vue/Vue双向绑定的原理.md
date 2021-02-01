@@ -60,3 +60,13 @@ Object.defineProperty(obj, 'value', {
 * 不能监听数组，需要对数组进行特异性操作（push，pop，shift
   * 利用index来设置数组项的时候，不能检测到。
 * 会污染源对象
+
+
+
+#### 观察者模式和发布-订阅模式的区别
+
+![img](https://user-gold-cdn.xitu.io/2017/11/22/15fe1b1f1797e09a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+发布订阅模式里，发布者的消息不会直接发送给订阅者。他们互相不知道对方的存在，需要一个第三方组件，叫做**信息中介**
+
+![img](https://user-gold-cdn.xitu.io/2017/11/22/15fe1b1f07c13719?imageslim)
