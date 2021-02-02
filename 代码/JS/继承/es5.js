@@ -76,9 +76,7 @@ var c = new Child();
 c.saySomething()
 console.log(c.hasOwnProperty('c')); // false
 console.log(c.hasOwnProperty('word')); // true
-// 缺点：
-// 1.不能向超类型的构造函数传参
-// 2.包含引用类型值的原型，会被所有实例共享
+
 
 // 如何判断是不是自身拥有的属性：hasOwnProperty方法
 
@@ -87,3 +85,11 @@ console.log(Object.keys(Child.prototype));
 // 可以内部重写类名
 
 // 变量会提升：不需要先声明构造方法
+
+// 原型对象的优点： 
+// 1.所有对象实例可以共享它包含的方法和属性
+// 2.调用耗时较少
+
+// 缺点：
+// 1.不能向超类型的构造函数传参
+// 2.包含引用类型值的原型，会被所有实例共享

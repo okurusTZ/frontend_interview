@@ -59,6 +59,7 @@ Object.defineProperty(obj, 'value', {
 * 需要for in遍历找对象中的属性
 * 不能监听数组，需要对数组进行特异性操作（push，pop，shift
   * 利用index来设置数组项的时候，不能检测到。
+  * 本质是无法监听到数组下标的变化
 * 会污染源对象
 
 
@@ -70,3 +71,41 @@ Object.defineProperty(obj, 'value', {
 发布订阅模式里，发布者的消息不会直接发送给订阅者。他们互相不知道对方的存在，需要一个第三方组件，叫做**信息中介**
 
 ![img](https://user-gold-cdn.xitu.io/2017/11/22/15fe1b1f07c13719?imageslim)
+
+#### Vuex和双向绑定的冲突问题
+
+问题来源：使用`v-model="obj.message"`时，如果这个obj本身是在计算属性中返回的一个store对象，那么用户在输入的时候，会试图修改obj.message。在严格模式时，会报错（在非mutation的位置尝试修改state
+
+#### 解决方案
+
+* 给input绑定value，然后侦听input或者change事件
+
+  `<input :value="message" @input="updateMessage">`
+
+  ```vue
+  methods: {
+  	updateMessage(e) {
+  		this.$store.commit('updateMessage', e.target.value)
+  	}
+  }
+  ```
+
+* 双向绑定计算属性
+
+  `<input v-model="message">`
+
+  ```vue
+  computed: {
+  	message: {
+  		get() {
+  			return this.$store.state.obj.message;
+  		}
+  		set(value) {
+  			this.$store.commit('updateMessage', value)
+  		}	
+  	}
+  }
+  ```
+
+  
+

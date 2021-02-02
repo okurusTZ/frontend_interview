@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      overflow: hidden;
+    }
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      margin: 120px;
+    }
+
+    .box2 {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      margin: 90px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 会发生外边距折叠，真正的margin只有120px -->
+  <!-- 想要避免外边距折叠，就要放在不同的BFC容器里 -->
+  <div class="box1"></div>
+  <div class="box2"></div>
+
+  <div class="container">
+    <div class="box1"></div>
+  </div>
+  <div class="container">
+    <div class="box2"></div>
+  </div>
+
+  <!-- 浮动元素会脱离文档流，这里的容器没有包裹着内部浮动元素 -->
+  <div style="border: 1px solid #000;">
+    <div style="width: 100px;height: 100px;background: #eee;float: left;"></div>
+  </div>
+
+  <!-- 将其变成BFC盒子之后，就会包裹了 -->
+  <div style="border: 1px solid #000;overflow: hidden;">
+    <div style="width: 100px;height: 100px;background: #eee;float: left;"></div>
+  </div>
+</body>
+</html>
