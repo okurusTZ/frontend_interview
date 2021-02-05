@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      border: 1px solid #111111;
+      height: 100px;
+      width: 100px;
+    }
+    div:hover {
+      /* forwards:动画停止之后，保留在结束状态 */
+      /* alternate,改变动画播放的方向 */
+      animation: 1s rainbow 3 forwards alternate steps(10);
+    }
+
+    @keyframes pound {
+      from {
+        /* 一开始没动画 */
+        transform: none;
+      }
+      to {
+        /* 扩大1.2倍 */
+        transform: scale(1.2);
+      }
+    }
+
+    .heart {
+      animation: pound .3s infinite;
+      width: 10%;
+      height: 10%;
+    }
+
+    @keyframes rainbow {
+      0% {background: #c00;}
+      50% {background: orange;}
+      100% {background: yellowgreen;}
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <img src="./img/heart.svg" class="heart" alt="">
+</body>
+</html>

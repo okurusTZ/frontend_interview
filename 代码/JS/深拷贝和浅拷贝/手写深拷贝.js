@@ -9,7 +9,6 @@
  * 所以需要利用一个map来记录所有已经拷贝过的对象
  */
 
-const { mainModule } = require("process");
 
 
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+      background-color: gainsboro;
+    }
+    .container {
+      width: 900px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+      /* 对超出尺寸进行裁剪 */
+      overflow: hidden;
+      position: relative;
+      top: 200px;
+    }
+    .box {
+      transition: .7s;
+      overflow: hidden;
+    }
+    .box:hover {
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+    .box img {
+      width: 400px;
+      /* overflow: hidden; */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box"><img src="./img/1.gif"></div>
+    <div class="box"><img src="./img/2.gif"></div>
+    <div class="box"><img src="./img/3.gif"></div>
+    <div class="box"><img src="./img/4.gif"></div>
+    <div class="box"><img src="./img/5.gif"></div>
+    <div class="box"><img src="./img/6.gif"></div>
+    <div class="box"><img src="./img/7.gif"></div>
+  </div>
+</body>
+</html>

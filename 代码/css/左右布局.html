@@ -1,0 +1,46 @@
+
+<!-- 设计要求
+      实现一个左右布局，左边固定100PX，
+      右边可伸缩，高度沾满整个屏幕。
+      右侧正中间有个长方形，
+      长方形长宽比4：3，长是父元素的50% -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+    .left {
+      width: 100px;
+      background-color: red;
+    }
+    .right {
+      flex: 1;
+      background-color: rosybrown;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box {
+      background-color: royalblue;
+      height: 50vh;
+      width: 37.5vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right">
+      <div class="box"></div>
+    </div>
+  </div>
+</body>
+</html>

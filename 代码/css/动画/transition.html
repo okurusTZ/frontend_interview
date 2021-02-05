@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      height: 15px;
+      width: 15px;
+      background-color: seagreen;
+      /* 指定状态变化所需要的时间 */
+      /* height指定适用的属性，即只有height需要在1s内变化，其他即时 */
+      /* 第二个1s表示的是延迟时间，指定动画发生顺序 */
+      transition: 1s height cubic-bezier(.83,.97,.05,1.44);
+      transition-delay: 2s;
+      transition-timing-function: ease;
+    }
+    img:hover {
+      height: 30px;
+      width: 30px;
+    }
+  </style>
+</head>
+<body>
+  <img src="../../../../vue/13-项目/my_mall/src/assets/img/common/Check.svg" alt="">
+</body>
+</html>

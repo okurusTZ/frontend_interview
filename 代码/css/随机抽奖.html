@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      width: 300px;
+      height: 300px;
+    }
+    li {
+      height: 80px;
+      width: 80px;
+      float: left;
+      margin-left: 10px;
+      border: 1px solid #000;
+      list-style: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+  </ul>
+  <input type="button" name="" id="" value="抽奖">
+</body>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+  <script>
+    var timer;
+    $('input').click(function() {
+      clearInterval(timer);
+      var now = 0;
+      var num = parseInt(Math.random()*100 + 1);
+      console.log(num);
+      timer = setInterval(() => {
+        $('li').css('background','#fff');
+        $('li').eq(now).css('background', 'red');
+        now++;
+        num--;
+        if(now == 9) {
+          now = 0;
+        }
+        if(num == 0) {
+          clearInterval(timer);
+          alert();
+        }
+      }, 100);
+    })
+  </script>
+</html>

@@ -1,3 +1,4 @@
+
 function trim(str) {
   let reg = /\s+/g;
   return str.replace(reg, '');
@@ -22,4 +23,34 @@ function trim(str) {
 // /e?le?/ 匹配 "angel" 中的 'el'、"angle" 中的 'le' 以及 "oslo' 中的 'l'。
 
 
-console.log(typeof [])
+
+// var a = 10;
+// (function() {
+//   // 报错，因为在这个作用域里声明了a
+//   // 这里是个死区了
+//   console.log(a);
+//   a = 5;
+//   console.log(window.a);
+//   console.log(a);
+//   let a =20;
+//   console.log(a);
+// })();
+
+function a1() {
+  this.name = '1'
+  console.log('1');
+}
+function a2() {
+  this.name = '2'
+  console.log('2');
+}
+
+function foo() {
+  console.log(this.name);
+}
+
+// 返回的函数实际上是一个bound function
+// 有个targetThis的参数
+// 执行绑定函数的时候，this指向与形参在bind方法执行的时候已经确定了，无法更改
+var foo = foo.bind(a2).bind(a1)
+console.log(foo);

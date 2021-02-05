@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      transition: .7s;
+    }
+    body {
+      background-color: rgb(60, 50, 120);
+      display: flex;
+      justify-content: center;
+    }
+
+    .a {
+      position: relative;
+      top: 100px;
+    }
+
+    .a:hover {
+      /* 定义了一个在二维平面上的倾斜转换 */
+      /* 这里表示沿着横坐标扭曲元素-55度，沿着纵坐标扭曲10度 */
+      transform: skew(-55deg,10deg);
+    }
+
+    .a:hover .b {
+      background-image: url('./img/汽车/2.gif')
+    }
+
+    .a:hover .c {
+      transform: skew(55deg) translateX(-15px);
+      /* 允许改变被转换元素的位置 */
+      /* 以顶部中点为原点 */
+      transform-origin: top;
+    }
+
+    .a:hover .d::after {
+      transform: translateY(-200px) translateX(120px) translateY(50px);
+    }
+
+    .a:hover .d {
+      bottom: 40px;
+      transform: skew(45deg,10deg) translateX(480px) translateY(-50px);
+    }
+
+    .a:hover .e {
+      transform: translateX(65px);
+    }
+
+    .a:hover .f {
+      transform: skew(55deg) translateX(116px);
+      text-decoration: none;
+    }
+    /* 车顶 */
+    .b {
+      height: 100px;
+      width: 300px;
+      background-color: #fff;
+    }
+
+    .c {
+      font-size: 60px;
+      display: block;
+      color: rgb(170, 200, 200);
+    }
+
+    /* 车轮 */
+    .d, .d::after {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(230, 70, 150);
+      border-radius: 50%;
+      position: absolute;
+      z-index: 99;
+      bottom: 10px;
+    }
+
+    .d::after {
+      content: '';
+      transition: .7s;
+    }
+
+    .e {
+      width: 300px;
+      height: 65px;
+      background-color: rgb(100, 40, 190);
+    }
+
+    .f {
+      width: 300px;
+      height: 70px;
+      background-color: rgb(230, 70, 150);
+      display: block;
+      text-align: right;
+      font-size: 26px;
+      line-height: 70px;
+      text-decoration: none;
+      color: rgb(170, 200, 200);
+    }
+  </style>
+</head>
+<body>
+  <div class="a">
+    <div class="b"></div>
+    <span class="c">WELCOME</span>
+    <div class="d"></div>
+    <div class="e"></div>
+    <a href="#" class="f">sylwia zhao</a>
+  </div>
+</body>
+</html>

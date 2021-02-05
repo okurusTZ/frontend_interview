@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes blink-caret {
+      50% {
+        border-right: transparent;
+      }
+    }
+    h1 {
+      /* steps 逐帧动画 steps(n, start/end)*/
+      font: bold 200% Consolas, Monaco, monospace;
+      animation: typing 10s steps(30, end),
+      blink-caret .5s step-end infinite alternate;
+      border-right: .1em solid;
+      width: 30ch;
+      width: 16.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 2em 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Typing animation by Lea Verou.</h1>
+</body>
+</html>
